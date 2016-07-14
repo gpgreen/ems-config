@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>gov.nasa.jpl</groupId>
+    <artifactId>mms-parent-pom</artifactId>
+    <version>1.0.0</version>
+    <name>MMS parent project</name>
+    <packaging>pom</packaging>
+    <description>Parent pom for repositories for any MMS build</description>
+
+    <parent>
+        <groupId>org.alfresco.maven</groupId>
+        <artifactId>alfresco-sdk-parent</artifactId>
+        <version>1.1.1</version>
+    </parent>
+
+    <distributionManagement>
+        <!-- use mvn -U deploy -DgeneratePom=true -Dpackaging=jar -->
+        <repository>
+            <id>openmbee-release</id>
+            <name>openmbee-releases</name>
+            <url>${releases.url}</url>
+        </repository>
+        <snapshotRepository>
+            <id>openmbee-snapshots</id>
+            <name>openmbee-snapshots</name>
+            <url>${snapshots.url}</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <!-- | SDK properties have sensible defaults in the SDK parent, | but you 
+        can override the properties below to use another version. | For more available 
+        properties see the alfresco-sdk-parent POM. -->
+    <properties>
+        <releases.url>https://oss.sonatype.org/content/repositories/releases</releases.url>
+        <snapshots.url>https://oss.sonatype.org/content/repositories/snapshots</snapshots.url>
+        <external.releases.url>https://oss.sonatype.org/content/repositories/releases</external.releases.url>
+        <external.snapshots.url>https://oss.sonatype.org/content/repositories/snapshots</external.snapshots.url>
+        <alfresco.public.url>https://artifacts.alfresco.com/nexus/content/groups/public</alfresco.public.url>
+        <alfresco.public.snapshots.url>https://artifacts.alfresco.com/nexus/content/groups/public-snapshots</alfresco.public.snapshots.url>
+        <alfresco.private.url>https://artifacts.alfresco.com/nexus/content/groups/private</alfresco.private.url>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>openmbee-releases</id>
+            <name>openmbee-releases</name>
+            <url>${releases.url}</url>
+        </repository>
+        <repository>
+            <id>openmbee-snapshots</id>
+            <name>openmbee-snapshots</name>
+            <url>${snapshots.url}</url>
+        </repository>
+        <repository>
+            <id>openmbee-external-releases</id>
+            <name>openmbee-external-releases</name>
+            <url>${external.releases.url}</url>
+        </repository>
+        <repository>
+            <id>openmbee-external-snapshots</id>
+            <name>openmbee-external-snapshots</name>
+            <url>${external.snapshots.url}</url>
+        </repository>
+       <repository>
+            <id>alfresco-private-repository</id>
+            <name>alfresco-private-repository</name>
+            <url>${alfresco.private.url}</url>
+        </repository>
+        <repository>
+            <id>alfresco-public</id>
+            <url>${alfresco.public.url}</url>
+        </repository>
+        <repository>
+            <id>alfresco-public-snapshots</id>
+            <url>${alfresco.public.snapshots.url}</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+</project>
